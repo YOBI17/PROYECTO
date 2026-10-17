@@ -1,0 +1,164 @@
+Algoritmo SistemaMantenimientoElectrico
+	
+    // =========================================================
+    // DECLARACIÓN DE ARREGLOS (Simulación de base de datos)
+    // =========================================================
+    Dimension eq_id[100], eq_nombre[100], eq_ubicacion[100], eq_estado[100]
+    Dimension mant_id[100], mant_eq[100], mant_tipo[100], mant_servicio[100], mant_fecha[100], mant_costo[100], mant_extra[100]
+	
+    Definir total_eq, total_mant, opcion, opcion_sub Como Entero
+    Definir costo_input, costo_total Como Real
+    Definir id_input, nom_input, ubi_input, est_input Como Cadena
+    Definir srv_input, fec_input, extra_input Como Cadena
+	
+    total_eq <- 0
+    total_mant <- 0
+	
+    Repetir
+        Borrar Pantalla
+        Escribir "========================================================="
+        Escribir "    SISTEMA DE GESTIÓN DE MANTENIMIENTO ELÉCTRICO"
+        Escribir "            Proyecto 769 - USAC (IPC1)"
+        Escribir "========================================================="
+        Escribir "1. Gestión de Equipos"
+        Escribir "2. Registrar Mantenimiento Preventivo"
+        Escribir "3. Registrar Mantenimiento Correctivo"
+        Escribir "4. Ver Historial General de Servicios"
+        Escribir "5. Salir del Sistema"
+        Escribir "========================================================="
+        Escribir Sin Saltar "Seleccione una opción (1-5): "
+        Leer opcion
+		
+        Segun opcion Hacer
+            1:
+                Borrar Pantalla
+                Escribir "--- REGISTRO DE NUEVO EQUIPO ---"
+                Escribir Sin Saltar "Ingrese ID del Equipo: "
+                Leer id_input
+                Escribir Sin Saltar "Ingrese Nombre/Descripción: "
+                Leer nom_input
+                Escribir Sin Saltar "Ingrese Ubicación: "
+                Leer ubi_input
+                Escribir Sin Saltar "Ingrese Estado (Operativo/En Mantenimiento): "
+                Leer est_input
+				
+                Si id_input <> "" Y nom_input <> "" Entonces
+                    total_eq <- total_eq + 1
+                    eq_id[total_eq] <- id_input
+                    eq_nombre[total_eq] <- nom_input
+                    eq_ubicacion[total_eq] <- ubi_input
+                    eq_estado[total_eq] <- est_input
+                    Escribir ""
+                    Escribir "-> ¡Equipo registrado con éxito en el sistema!"
+                Sino
+                    Escribir ""
+                    Escribir "-> ERROR: Los campos principales no pueden estar vacíos."
+                FinSi
+				
+                Escribir ""
+                Escribir "Presione ENTER para continuar..."
+                Esperar Tecla
+				
+            2:
+                Borrar Pantalla
+                Escribir "--- REGISTRAR MANTENIMIENTO PREVENTIVO ---"
+                Escribir Sin Saltar "Ingrese ID de Mantenimiento: "
+                Leer id_input
+                Escribir Sin Saltar "Ingrese ID del Equipo Asociado: "
+                Leer nom_input
+                Escribir "Seleccione Código de Servicio (P01: Inspección / P02: Limpieza / P03: Ajuste): "
+                Leer srv_input
+                Escribir Sin Saltar "Ingrese Fecha (AAAA-MM-DD): "
+                Leer fec_input
+                Escribir Sin Saltar "Ingrese Costo (Q): "
+                Leer costo_input
+                Escribir Sin Saltar "Ingrese Frecuencia en días (Ej. 30): "
+                Leer extra_input
+				
+                Si id_input <> "" Y costo_input >= 0 Entonces
+                    total_mant <- total_mant + 1
+                    mant_id[total_mant] <- id_input
+                    mant_eq[total_mant] <- nom_input
+                    mant_tipo[total_mant] <- "Preventivo"
+                    mant_servicio[total_mant] <- srv_input
+                    mant_fecha[total_mant] <- fec_input
+                    mant_costo[total_mant] <- costo_input
+                    mant_extra[total_mant] <- extra_input + " días"
+                    Escribir ""
+                    Escribir "-> ¡Mantenimiento Preventivo guardado correctamente!"
+                Sino
+                    Escribir ""
+                    Escribir "-> ERROR: Datos inválidos o campos vacíos."
+                FinSi
+				
+                Escribir ""
+                Escribir "Presione ENTER para continuar..."
+                Esperar Tecla
+				
+            3:
+                Borrar Pantalla
+                Escribir "--- REGISTRAR MANTENIMIENTO CORRECTIVO ---"
+                Escribir Sin Saltar "Ingrese ID de Mantenimiento: "
+                Leer id_input
+                Escribir Sin Saltar "Ingrese ID del Equipo Asociado: "
+                Leer nom_input
+                Escribir "Seleccione Código de Servicio (C01: Fusible / C02: Cableado / C03: Motor): "
+                Leer srv_input
+                Escribir Sin Saltar "Ingrese Fecha (AAAA-MM-DD): "
+                Leer fec_input
+                Escribir Sin Saltar "Ingrese Costo (Q): "
+                Leer costo_input
+                Escribir Sin Saltar "Ingrese Diagnóstico de la falla: "
+                Leer extra_input
+				
+                Si id_input <> "" Y costo_input >= 0 Entonces
+                    total_mant <- total_mant + 1
+                    mant_id[total_mant] <- id_input
+                    mant_eq[total_mant] <- nom_input
+                    mant_tipo[total_mant] <- "Correctivo"
+                    mant_servicio[total_mant] <- srv_input
+                    mant_fecha[total_mant] <- fec_input
+                    mant_costo[total_mant] <- costo_input
+                    mant_extra[total_mant] <- extra_input
+                    Escribir ""
+                    Escribir "-> ¡Mantenimiento Correctivo guardado correctamente!"
+                Sino
+                    Escribir ""
+                    Escribir "-> ERROR: Datos inválidos o campos vacíos."
+                FinSi
+				
+                Escribir ""
+                Escribir "Presione ENTER para continuar..."
+                Esperar Tecla
+				
+            4:
+                Borrar Pantalla
+                Escribir "========================================================="
+                Escribir "            HISTORIAL GENERAL DE SERVICIOS"
+                Escribir "========================================================="
+                
+                Si total_mant = 0 Entonces
+                    Escribir "No hay mantenimientos registrados todavía."
+                Sino
+                    costo_total <- 0
+                    Para i <- 1 Hasta total_mant Con Paso 1 Hacer
+                        Escribir "[" , mant_tipo[i] , "] ID: " , mant_id[i] , " | Equipo: " , mant_eq[i] , " | Servicio: " , mant_servicio[i] , " | Fecha: " , mant_fecha[i] , " | Costo: Q" , mant_costo[i] , " | Detalle: " , mant_extra[i]
+                        costo_total <- costo_total + mant_costo[i]
+                    FinPara
+                    Escribir "---------------------------------------------------------"
+                    Escribir "Total de Servicios: " , total_mant
+                    Escribir "Costo Total Acumulado: Q" , costo_total
+                FinSi
+				
+                Escribir "========================================================="
+                Escribir "Presione ENTER para regresar al menú..."
+                Esperar Tecla
+				
+            5:
+                Escribir ""
+                Escribir "Saliendo del sistema... ¡Éxito en tu entrega de proyecto!"
+        FinSegun
+		
+    Hasta Que opcion = 5
+
+FinAlgoritmo
