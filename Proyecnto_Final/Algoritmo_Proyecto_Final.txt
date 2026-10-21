@@ -1,0 +1,122 @@
+Algoritmo SISTEMA DE GESTIÓN DE MANTENIMIENTO
+	ELÉCTRICO
+	Inicio y preparación
+	1. Inicio.
+	2. Ejecutar main.py, que llama a la función
+	iniciar_aplicacion() de interfaz.py.
+	3. Crear la ventana principal de Tkinter.
+	4. Verificar la carpeta de datos con
+    asegurar_directorio(): si la carpeta datos/ no
+	existe, crearla; si ocurre un error, mostrar un
+	aviso.
+	5. Cargar los equipos con cargar_equipos():
+	a) Si equipos.txt no existe, devolver una lista
+	vacía y continuar.
+	b) Si existe, leerlo línea por línea e ignorar
+	las líneas vacías.
+	c) Separar cada línea por el delimitador «|»;
+	si no tiene 4 campos, avisar y omitirla.
+	d) Crear un objeto Equipo con los campos y
+	agregarlo a la lista.
+	6. Cargar los mantenimientos preventivos con
+	cargar_preventivos(), con el mismo
+	procedimiento del paso anterior, pero con 6
+	campos; convertir costo a decimal y
+	frecuencia_dias a entero (si la conversión falla,
+	avisar y omitir la línea).
+	7. Cargar los mantenimientos correctivos con
+	cargar_correctivos(), con 6 campos y
+	convirtiendo el costo a decimal.
+	8. Construir la pantalla de bienvenida y la ventana
+	con pestañas: Equipos, Mantenimiento
+	Preventivo, Mantenimiento Correctivo e
+	Historial General.
+	9. Llenar las tablas y los combos con los datos
+	cargados en los pasos 5, 6 y 7.
+	10. Mostrar la pantalla de bienvenida con el título
+	del sistema y el botón «Ingresar al sistema».
+	11. Esperar el clic en «Ingresar al sistema»; al
+	presionarlo, ocultar la bienvenida y mostrar las
+	pestañas.
+	Ciclo principal
+	12. Esperar una acción del usuario y decidir:
+	a) Si presiona «Registrar equipo», ir al paso
+	13.
+	b) Si presiona «Registrar mantenimiento»
+	(preventivo o correctivo), ir al paso 19.
+	c) Si cambia de pestaña para consultar una
+	tabla o el historial, mostrar la pestaña y
+	volver al paso 12.
+	d) Si cierra la ventana, ir al paso 32.
+	Registro de un equipo
+    13. Leer ID, nombre y ubicación de los cuadros de
+	texto y el estado del combo, quitando los
+	espacios sobrantes.
+	14. Si algún campo está vacío, mostrar el error
+	«Campos vacíos» con messagebox.showerror y
+	volver al paso 12.
+	15. Si algún texto contiene «|», mostrar un error y
+	volver al paso 12.
+	16. Si ya existe un equipo con el mismo ID,
+	mostrar el error «ID duplicado» y volver al paso
+	12.
+	17. Crear el objeto Equipo y guardarlo con
+	guardar_equipo(): asegurar la carpeta,
+	reemplazar «|» y saltos de línea en los datos,
+	unir los campos con «|» y escribir la línea al
+	final de equipos.txt. Si ocurre un error de
+	archivo (try-except), mostrar el error y volver al
+	paso 12; si resulta bien, agregar el equipo a la
+	lista en memoria.	
+	18. Limpiar los cuadros de texto y el combo de
+	estado, mostrar «Registro exitoso» e ir al paso
+	29.
+	Registro de un mantenimiento
+	19. Leer ID, equipo, servicio, fecha, costo y el dato
+	propio del tipo (frecuencia en días si es
+	preventivo, diagnóstico si es correctivo),
+	quitando los espacios sobrantes.
+	20. Si algún campo está vacío, mostrar el error
+	«Campos vacíos» y volver al paso 12.
+	21. Si el ID o el diagnóstico contienen «|», mostrar
+	un error y volver al paso 12.
+	22. Si el ID ya existe entre los mantenimientos
+	preventivos y correctivos, mostrar el error «ID
+	duplicado» y volver al paso 12.
+	23. Si la fecha no tiene el formato AAAA-MM-DD
+	o no es una fecha real, mostrar el error y volver
+	al paso 12.
+	24. Si el costo no es un número o es menor que 0,
+	mostrar el error y volver al paso 12.
+	25. Si es preventivo y la frecuencia no es un entero
+	mayor que 0, mostrar el error y volver al paso
+	12.
+	26. Obtener el id_equipo del equipo seleccionado y
+	el código del servicio (por ejemplo P01 o C01),
+	y crear el objeto MantenimientoPreventivo o
+	MantenimientoCorrectivo.
+	27. Guardar el mantenimiento con
+	guardar_preventivo() o guardar_correctivo(),
+	que escriben una línea con los campos separados
+	por «|» en preventivos.txt o correctivos.txt. Si
+	ocurre un error de archivo, mostrar el error y
+	volver al paso 12; si resulta bien, agregar el
+	objeto a la lista en memoria.
+	28. Limpiar los cuadros de texto y los combos,
+	mostrar «Registro exitoso» e ir al paso 29.
+	Actualización de tablas
+	29. Actualizar los combos y las tablas: reconstruir
+	la lista de equipos de los combos y volver a
+	llenar las tablas de equipos, preventivos y
+	correctivos con los datos en memoria.
+	30. Actualizar el historial: unir preventivos y
+	correctivos en una sola lista, ordenarla por fecha,
+	llenar la tabla del Historial General (tipo, ID,
+	equipo, servicio, fecha, costo y detalle) y
+	mostrar la cantidad de servicios y la suma de los
+	costos.
+	31. Volver al paso 12.
+	Cierre
+	32. Cerrar la ventana; los datos ya quedaron
+	guardados en los archivos de la carpeta datos/.
+	33. Fin.
