@@ -1,0 +1,194 @@
+MANUAL DE USUARIO
+
+Sistema de Gestion de Mantenimiento Eléctrico
+
+1. ¿Para qué sirve el programa?
+
+El Sistema de Gestión de Mantenimiento Eléctrico permite llevar un control de los equipos eléctricos y los servicios de mantenimiento realizados.
+
+Con el programa podrá:
+- Registrar y consultar equipos eléctricos.
+- Registrar mantenimientos preventivos.
+- Registrar mantenimientos correctivos.
+- Consultar el historial de servicios realizados.
+- Visualizar la cantidad de servicios y el costo total acumulado.
+La información se guarda automáticamente en la computadora.
+
+2. Requisitos e instalación
+
+Para utilizar el programa se necesita:
+- Una computadora con Windows.
+- Python versión 3.8 o superior.
+- El archivo sistema_completo.py.
+Instalación de Python:
+2. Descargue e instale la versión más reciente de Python.
+3. Durante la instalación, marque la opción Add python.exe to PATH.
+4. Finalice la instalación.
+Para comprobar que Python está instalado, abra CMD y escriba:
+
+python --version
+
+Si aparece la versión instalada, puede continuar.
+
+Preparación del programa:
+1. Cree una carpeta llamada Mantenimiento en su computadora.
+2. Coloque dentro de ella el archivo sistema_completo.py.
+3. Ejecute el archivo para abrir el sistema.
+Si no abre directamente, entre a la carpeta, escriba cmd en la barra de dirección y ejecute:
+
+python sistema_completo.py
+
+3. Ingreso al sistema
+
+Al ejecutar el programa aparecerá una pantalla de bienvenida.
+1. Haga clic en Ingresar al sistema.
+2. Se abrirá la pantalla principal.
+3. En la parte superior encontrará el botón Volver al inicio, que permite regresar a la pantalla de bienvenida sin perder la información registrada.
+El sistema cuenta con cuatro pestañas principales:
+- Equipos: registro y consulta de equipos eléctricos.
+- Mantenimiento Preventivo: registro de revisiones programadas.
+- Mantenimiento Correctivo: registro de reparaciones.
+- Historial General: consulta de todos los servicios registrados.
+4. Registro de equipos
+
+Antes de registrar cualquier mantenimiento, es necesario ingresar los equipos al sistema.
+
+Procedimiento:
+1. Ingrese a la pestaña Equipos.
+2. Complete los campos solicitados:
+ID del equipo: código único de identificación. Ejemplo: EQ-001.
+
+Nombre: nombre del equipo. Ejemplo: Transformador principal.
+
+Ubicación: lugar donde se encuentra. Ejemplo: Bodega 2.
+
+Estado: seleccione entre Operativo, En mantenimiento o Fuera de servicio.
+3. Haga clic en Registrar equipo.
+4. Aparecerá un mensaje de confirmación indicando que el registro fue exitoso.
+5. El equipo aparecerá en la tabla de equipos registrados.
+Importante:
+- Todos los campos son obligatorios.
+- No se permite repetir el ID de un equipo.
+- No utilice el símbolo de barra vertical en los campos.
+5. Registro de mantenimiento preventivo
+
+El mantenimiento preventivo corresponde a las revisiones programadas que se realizan para evitar posibles fallas en los equipos.
+
+Procedimiento:
+1. Ingrese a la pestaña Mantenimiento Preventivo.
+2. Complete los campos solicitados:
+ID del mantenimiento: código único. Ejemplo: MP-001.
+
+Equipo: seleccione el equipo al que se le realizará el mantenimiento.
+
+Servicio: seleccione el trabajo realizado.
+
+P01: Inspección visual general.
+
+P02: Limpieza de contactos y terminales.
+
+P03: Ajuste de conexiones.
+
+P04: Medición de aislamiento.
+
+P05: Lubricación y revisión mecánica.
+
+Fecha: ingrese la fecha en formato AAAA-MM-DD. Ejemplo: 2026-03-15.
+
+Costo en quetzales: ingrese el costo del servicio. Ejemplo: 250.50.
+
+Frecuencia en días: indique cada cuántos días se realizará nuevamente el mantenimiento. Ejemplo: 30.
+3. Verifique que la información sea correcta.
+4. Haga clic en Registrar mantenimiento.
+5. El sistema mostrará un mensaje de confirmación.
+6. Registro de mantenimiento correctivo
+
+El mantenimiento correctivo corresponde a las reparaciones realizadas cuando un equipo presenta alguna falla.
+
+Procedimiento:
+1. Ingrese a la pestaña Mantenimiento Correctivo.
+2. Complete los campos solicitados:
+ID del mantenimiento: código único. Ejemplo: MC-001.
+
+Equipo: seleccione el equipo que presenta la falla.
+
+Servicio: seleccione el trabajo realizado.
+
+C01: Reemplazo de fusible o interruptor.
+
+C02: Reparación de cableado.
+
+C03: Cambio de componente dañado.
+
+C04: Reparación de motor.
+
+C05: Reemplazo completo del equipo.
+
+Fecha: ingrese la fecha en formato AAAA-MM-DD.
+
+Costo en quetzales: indique el costo de la reparación.
+
+Diagnóstico: describa brevemente la falla encontrada. Ejemplo: Cable quemado por sobrecarga.
+3. Verifique los datos ingresados.
+4. Haga clic en Registrar mantenimiento.
+5. El sistema confirmará que el registro fue realizado correctamente.
+7. Consulta del historial general
+
+Esta sección permite consultar los mantenimientos preventivos y correctivos registrados en el sistema.
+
+Procedimiento:
+1. Ingrese a la pestaña Historial General.
+2. Se mostrará una tabla con los servicios registrados, ordenados por fecha.
+3. La tabla contiene la siguiente información:
+Tipo: indica si el mantenimiento fue preventivo o correctivo.
+
+ID: código del mantenimiento.
+
+Equipo: identificación y nombre del equipo.
+
+Servicio: código y descripción del trabajo realizado.
+
+Fecha: fecha del servicio.
+
+Costo: costo del mantenimiento.
+
+Detalle: frecuencia del mantenimiento preventivo o diagnóstico del correctivo.
+
+4. En la parte inferior derecha podrá consultar:
+
+Cantidad total de servicios registrados.
+
+Costo total acumulado.
+
+Si existen muchos registros, utilice la barra de desplazamiento para consultar la información.
+
+8. Validaciones y mensajes de error
+
+El sistema verifica la información antes de guardarla. Si algún dato es incorrecto, mostrará un mensaje indicando el problema.
+
+Considere las siguientes reglas:
+- Todos los campos deben estar completos.
+- Los códigos de equipos y mantenimientos no deben repetirse.
+- Las fechas deben tener el formato AAAA-MM-DD y corresponder a fechas válidas.
+- El costo debe ser un número igual o mayor que cero.
+- La frecuencia del mantenimiento preventivo debe ser un número entero mayor que cero.
+- Debe seleccionar un equipo de la lista antes de registrar un mantenimiento.
+- No utilice el símbolo de barra vertical en los campos correspondientes.
+Si aparece un mensaje de error, corrija la información indicada e intente registrar nuevamente.
+
+9. Almacenamiento y cierre del programa
+
+La información se guarda automáticamente al registrar equipos y mantenimientos.
+
+El sistema crea una carpeta llamada datos, donde almacena los registros:
+- equipos.txt
+- preventivos.txt
+- correctivos.txt
+Recomendaciones:
+- No elimine ni modifique manualmente estos archivos.
+- Realice copias de seguridad periódicas de la carpeta datos.
+- Para trasladar la información a otra computadora, copie la carpeta datos junto al archivo del programa.
+- Mantenga el programa y su carpeta de datos en la misma ubicación.
+Para cerrar el programa:
+
+Haga clic en la X ubicada en la esquina superior de la ventana. No necesita realizar ningún procedimiento adicional para guardar la información.
